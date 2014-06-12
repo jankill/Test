@@ -19,10 +19,10 @@
     </context:component-scan>
 
     <bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.0.10:1433;DatabaseName=dmac;"/>
-        <property name="username" value="codescanner"/>
-        <property name="password" value="codescanner"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/wms"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
         <property name="validationQuery" value="SELECT 1"/>
         <!--maxActive: 最大连接数量 -->
         <property name="maxActive" value="3"/>

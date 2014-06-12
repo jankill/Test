@@ -1,7 +1,7 @@
 
 .string,
 .function .title,
-.class .title, 
+.class .title,
 .tag .attribute .value,
 .css .rules .value,
 .preprocessor,
@@ -13,20 +13,23 @@
 .django .template_tag,
 .django .variable,
 .smalltalk .class {
-	color: #800;
+    color: #800;
 }
+
 .comment,
 .java .annotation,
 .template_comment {
-	color: #888;
+    color: #888;
 }
+
 .number,
 .regexp,
 .javascript .literal,
 .smalltalk .symbol,
 .smalltalk .char {
-	color: #080;
+    color: #080;
 }
+
 .javadoc,
 .ruby .string,
 .python .decorator,
@@ -35,8 +38,9 @@
 .smalltalk .array,
 .css .attr_selector,
 .xml .pi {
-	color: #88F;
+    color: #88F;
 }
+
 .keyword,
 .css .id,
 .phpdoc,
@@ -47,5 +51,5 @@
 .rsl .built_in,
 .smalltalk .class,
 .xml .tag .title {
-	font-weight: bold;
+    font-weight: bold;
 }

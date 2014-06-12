@@ -39,10 +39,6 @@
             width: 14em;
         }
 
-        /*.claro .demoLayout .edgePanel {
-            background-color: #d0e9fc;
-        }*/
-
         #viewsChart {
             width: 550px;
             height: 550px;
@@ -57,22 +53,19 @@
             "dojo/_base/declare",
             "dgrid/Grid",
             "dojo/request",
+            "dojo/store/JsonRest",
+            "dojo/data/ObjectStore",
             "dojo/store/Memory",
             "dgrid/extensions/Pagination",
             "dgrid/Selection",
             "dgrid/Keyboard",
             "dgrid/editor",
-            "dojo/domReady!"], function (JsonRest, declare, Grid, request, Memory, Pagination, Selection, Keyboard,editor) {
-            /* var store = new JsonRest({
-             target:"getAllInv"
-             });*/
-            request("getAllInv", {
-                handleAs: "json"
-            }).then(function (response) {
-                // Once the response is received, build an in-memory store
-                // with the data
-                var store = new Memory({ data: response });
-
+            "dojo/domReady!"], function (JsonRest, declare, Grid, request, JsonRest, ObjectStore, Memory, Pagination, Selection, Keyboard, editor) {
+            var store = new JsonRest({idProperty: 'id',
+                target: "getAllInv"
+            });
+            store.query("", {start: 0, count: 15}).then(function (results) {
+                /* var dataStore = new ObjectStore({ob})*/
                 // Create an instance of OnDemandGrid referencing the store
                 var grid = new (declare([Grid, Pagination]))({
                     store: store,
@@ -100,6 +93,18 @@
 
             });
 
+            /*
+             request("getAllInv", {
+             handleAs: "json"
+             }).then(function (response) {
+             // Once the response is received, build an in-memory store
+             // with the data
+             var store = new Memory({ data: response });
+             // Create an instance of OnDemandGrid referencing the store
+
+
+             });
+             */
         });
     </script>
 </head>

@@ -34,7 +34,7 @@ var button1 = new Button({
 
     onClick: function () {
         var widget = registry.byId("userContent1");
-        
+
         alert(widget);
         if (typeof widget == "undefined") {
             btnct1 = new ContentPane({
