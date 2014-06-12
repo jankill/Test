@@ -1,77 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<!--<mvc:annotation-driven /> 是一种简写形式，完全可以手动配置替代这种简写形式，简写形式可以让初学都快速应用默认配置方案。<mvc:annotation-driven 
-		/> 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring 
-		MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持，读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
-	<!--默认的注解映射的支持 -->
-	<mvc:annotation-driven />
-	<!--自动扫描包 表现层配置文件，只应加装表现层Bean ，否则可能引起问题。 -->
-	<!-- 开启controller注解支持 -->
-	<!-- 注：如果base-package=org.delta.rf.web 则注解事务不起作用 -->
-	<!-- 此处只应该加载表现层组件，如果此处还加载dao层或service层的bean会将之前容器加载的替换掉，而且此处不会进行AOP织入，所以会造成AOP失效问题（如事务不起作用） -->
-	<context:component-scan base-package="com.dongyf.spring.controller">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Service" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Repository" />
-	</context:component-scan>
+    <!--<mvc:annotation-driven /> 是一种简写形式，完全可以手动配置替代这种简写形式，简写形式可以让初学都快速应用默认配置方案。<mvc:annotation-driven
+        /> 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring
+        MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持，读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
+    <!--默认的注解映射的支持 -->
+    <mvc:annotation-driven/>
+    <!--自动扫描包 表现层配置文件，只应加装表现层Bean ，否则可能引起问题。 -->
+    <!-- 开启controller注解支持 -->
+    <!-- 注：如果base-package=org.delta.rf.web 则注解事务不起作用 -->
+    <!-- 此处只应该加载表现层组件，如果此处还加载dao层或service层的bean会将之前容器加载的替换掉，而且此处不会进行AOP织入，所以会造成AOP失效问题（如事务不起作用） -->
+    <context:component-scan base-package="com.dongyf.spring.controller">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
 
 
-	<bean
-		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="mediaTypes">
-			<map>
-				<entry key="atom" value="application/atom+xml" />
-				<entry key="html" value="text/html" />
-				<entry key="json" value="application/json" />
-			</map>
-		</property>
-	</bean>
+    <bean
+            class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <entry key="atom" value="application/atom+xml"/>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+    </bean>
 
-	<bean id="mappingJacksonHttpMessageConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-		<property name="supportedMediaTypes">
-			<list>
-				<value>application/json;charset=UTF-8</value>
-			</list>
-		</property>
-	</bean>
-	<!-- 总错误处理 -->
-	<bean id="exceptionResolver"
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView">
-			<value>/error</value>
-		</property>
-		<property name="defaultStatusCode">
-			<value>500</value>
-		</property>
-		<property name="warnLogCategory">
-			<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver
-			</value>
-		</property>
-	</bean>
-	<!-- 静态资源映射 -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+
+        </property>
+
+    </bean>
+    <!-- 总错误处理 -->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView">
+            <value>/error</value>
+        </property>
+        <property name="defaultStatusCode">
+            <value>500</value>
+        </property>
+        <property name="warnLogCategory">
+            <value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver
+            </value>
+        </property>
+    </bean>
+    <!-- 静态资源映射 -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-	<!-- InternalResourceViewResolver ：用于支持Servlet、JSP视图解析； -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+    <!-- InternalResourceViewResolver ：用于支持Servlet、JSP视图解析； -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
 
-		<!-- prefix 和 suffix ：查找视图页面的前缀和后缀（前缀[逻辑视图名]后缀），比如传进来的逻辑视图名为hello，则该该jsp视图页面应该存放在“WEB-INF/jsp/hello.jsp” -->
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
+        <!-- prefix 和 suffix ：查找视图页面的前缀和后缀（前缀[逻辑视图名]后缀），比如传进来的逻辑视图名为hello，则该该jsp视图页面应该存放在“WEB-INF/jsp/hello.jsp” -->
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
 
-		<!-- viewClass ：JstlView表示JSP模板页面需要使用JSTL标签库，classpath中必须包含jstl的相关jar包； -->
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-	</bean>
+        <!-- viewClass ：JstlView表示JSP模板页面需要使用JSTL标签库，classpath中必须包含jstl的相关jar包； -->
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
 
 </beans>

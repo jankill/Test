@@ -1,12 +1,12 @@
 define([
-	'./intern'
+    './intern'
 ], function (intern) {
-	intern.useSauceConnect = false;
-	
-	intern.environments = [
-		{ browserName: 'firefox' },
-		{ browserName: 'chrome' }
-	];
+    intern.useSauceConnect = false;
 
-	return intern;
+    intern.environments = [
+        { browserName: 'firefox' },
+        { browserName: 'chrome' }
+    ];
+
+    return intern;
 });

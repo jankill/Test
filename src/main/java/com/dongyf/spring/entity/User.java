@@ -1,4 +1,4 @@
-package com.dongyf.spring.controller;
+package com.dongyf.spring.entity;
 
 /**
  * Created by dongyf on 2014/5/20.

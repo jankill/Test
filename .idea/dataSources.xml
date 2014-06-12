@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="104222307">
+    <data-source source="LOCAL" name="MySQL - @localhost" uuid="61ac4325-76ce-4982-9883-95a54255274c">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <schema-pattern>wms.*</schema-pattern>
+      <default-schemas>wms.*</default-schemas>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="SQL Server - @192.168.0.23" uuid="4bed1c51-9240-4523-b7c9-a18127f6ace1">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://192.168.0.23:1433</jdbc-url>
+      <user-name>wms</user-name>
+      <user-password>dfdddfc7dfd9dfeadfcedfcfdfc6dfdedfcbdff5df98df9adf9bdf99</user-password>
+      <schema-pattern>WMS_COMM.dbo</schema-pattern>
+      <default-schemas>WMS_BOND.* WMS_CM.* WMS_COMM.*</default-schemas>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

@@ -1,18 +1,40 @@
 
-form-field = {
-	=>
-		label (content/label)
-		input (content)
-		span.error (content/errors);
+form-field
+
+=
+{
+=
+>
+label
+(
+content
+/
+label
+)
+input
+(
+content
+)
+span
+.
+error
+(
+content
+/
+errors
+)
+;
 }
 
-model = module('xstyle/test/form-data');
+model
+
+=
+module
+(
+'xstyle/test/form-data'
+)
+;
 
 body {
-	=>
-		h1 (model/firstName)
-		form
-			form-field (model/firstName)
-			form-field (model/lastName)
-			form-field (model/age);				
+= > h1 (model / firstName) form form-field (model / firstName) form-field (model / lastName) form-field (model / age);
 }
